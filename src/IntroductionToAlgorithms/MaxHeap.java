@@ -9,6 +9,7 @@ import java.util.Arrays;
  */
 public class MaxHeap {
     static int[] arr = new int[]{16,4,10,14,7,9,3,2,15,10};
+    static  int heapSize = arr.length;
     public static int parent(int i){
         return  i/2;
     }
@@ -32,12 +33,12 @@ public class MaxHeap {
         int r = right(i)-1;
         i--;
         //若左叶节点不超过数组长度且坐叶节点大于根节点
-        if(l <= arr.length-1 && arr[l]>arr[i]){
+        if(l <= heapSize-1 && arr[l]>arr[i]){
             latest = l;
         }else {
             latest = i;
         }
-        if (r<= arr.length-1 && arr[r]> arr[latest]){
+        if (r<= heapSize-1 && arr[r]> arr[latest]){
             latest = r;
         }
         if(latest != i){
@@ -53,13 +54,26 @@ public class MaxHeap {
 
     // 从下往上构建最大堆
     public  static  void buildMaxHeap(){
-        for (int i = (arr.length/2);i >= 1 ;i--){
+        for (int i = (heapSize/2);i >= 1 ;i--){
             maxHeapify(arr,i);
         }
     }
 
-    public static void main(String[] args) {
+
+    public static  void heapSort(){
         buildMaxHeap();
+        for(int i = heapSize;i>=2 ; i--){
+            int tamp = arr[0] ;
+            arr[0] = arr[i-1];
+            arr[i-1] = tamp;
+            heapSize--;
+            maxHeapify(arr,1);
+
+        }
+    }
+    public static void main(String[] args) {
+        //buildMaxHeap();
+        heapSort();
         Arrays.stream(arr).forEach(x->{
             System.out.print(x+" ,");
         });
