@@ -59,7 +59,13 @@ public class MaxHeap {
         }
     }
 
-
+    /**
+     * 升序排序使用大顶堆  （降序使用小顶堆）
+     * 1. 构建大顶堆
+     * 2. 将最末尾的数与根节点交换（数组最大值）
+     * 3. 堆大小减1
+     * 4. 重新保持最大堆性质
+     */
     public static  void heapSort(){
         buildMaxHeap();
         for(int i = heapSize;i>=2 ; i--){
