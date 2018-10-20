@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 public class MaximumSubarray {
     int[] arr = new int[]{1,2,-1,-8,3,4};
+    //若最大值跨越mid
     public int findMaxCrossingSubarray(int low,int mid, int high){
         int sum = 0;
         int leftSum = Integer.MIN_VALUE;
+        //包含mid的左边最大值
         for(int i = mid;i>=low;i--){
             sum += arr[i];
             if(sum> leftSum){
@@ -15,6 +17,7 @@ public class MaximumSubarray {
         }
         sum = 0;
         int rightSum = Integer.MIN_VALUE;
+        //包含mid+1右边的最大值
         for(int i = mid + 1 ; i<=high;i++){
             sum += arr[i];
             if (sum > rightSum) {

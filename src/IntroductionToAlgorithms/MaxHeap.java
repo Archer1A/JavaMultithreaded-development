@@ -9,7 +9,6 @@ import java.util.Arrays;
  */
 public class MaxHeap {
     static int[] arr = new int[]{16,4,10,14,7,9,3,2,15,10};
-    static  int heapSize = arr.length;
     public static int parent(int i){
         return  i/2;
     }
@@ -28,6 +27,7 @@ public class MaxHeap {
      * @return 构建后的数组
      */
     public  static void maxHeapify(int[] arr, int i){
+        int heapSize = arr.length -1 ;
         int latest = Integer.MIN_VALUE;
         int l = left(i)-1;
         int r = right(i)-1;
@@ -53,7 +53,8 @@ public class MaxHeap {
     }
 
     // 从下往上构建最大堆
-    public  static  void buildMaxHeap(){
+    public  static  void buildMaxHeap(int[] arr){
+        int heapSize = arr.length -1 ;
         for (int i = (heapSize/2);i >= 1 ;i--){
             maxHeapify(arr,i);
         }
@@ -67,7 +68,8 @@ public class MaxHeap {
      * 4. 重新保持最大堆性质
      */
     public static  void heapSort(){
-        buildMaxHeap();
+        buildMaxHeap(arr);
+        int heapSize = arr.length -1 ;
         for(int i = heapSize;i>=2 ; i--){
             int tamp = arr[0] ;
             arr[0] = arr[i-1];
