@@ -1,8 +1,18 @@
 package IntroductionToAlgorithms;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class QuickSortDemo {
+
+    public int randomPartition(int[] arr,int p,int r){
+        Random random = new Random();
+        int i = random.nextInt(r-p)+p;
+        int tmp = arr[r];
+        arr[r] = arr[i];
+        arr[i] = tmp;
+        return partition(arr,p,r);
+    }
 
     public    int partition(int[] arr,int p,int r){
 
@@ -25,7 +35,8 @@ public class QuickSortDemo {
 
     public void quickSort(int[] arr,int p,int r){
         if(p<r){
-            int q = partition(arr,p,r);
+         //   int q = partition(arr,p,r);
+            int q = randomPartition(arr, p, r);
             quickSort(arr, p, q - 1);
             quickSort(arr, q + 1, r);
         }
