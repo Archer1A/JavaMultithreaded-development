@@ -11,6 +11,9 @@ public class TreeNode {
     private TreeNode parent;
 
     public TreeNode() {
+        this.left = null;
+        this.right = null;
+        this.parent = null;
     }
 
     public TreeNode(int key, int data) {
