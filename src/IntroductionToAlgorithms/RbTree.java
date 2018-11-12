@@ -73,6 +73,17 @@ public class RbTree {
         return (node == null? BLACK:node.color);
     }
 
+    private void RBTransplant(Entry u, Entry v) {
+        if (u.getParent() == null) {
+            root = v;
+        } else if (u == u.getParent().getLeft()) {
+            u.getParent().setLeft(v);
+
+        }else {
+            u.getParent().setRight(v);
+        }
+    }
+
 
     /**
      * 修复的3中情况
